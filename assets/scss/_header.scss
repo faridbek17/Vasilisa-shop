@@ -1,0 +1,121 @@
+.header{
+    position: relative;
+    padding: 20px 0;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    background-color: $white-c;
+    z-index: 100;
+
+    &__row{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__link{
+        font-family: $main-f;
+        font-weight: 300;
+        font-size: 20px;
+        line-height: 130%;
+        color: $link-c;
+        @extend %transition;
+
+        &:not(:last-child){
+            margin-right: 20px;
+        }
+
+        &:hover,
+        &.active{
+            color: $gold-c;
+        }
+
+    }
+
+    &__btn{
+        background: none;
+        border: none;
+        padding: 14px;
+        cursor: pointer;
+
+        &:not(:last-child){
+            margin-right: 10px;
+        }
+
+        path{
+            @extend %transition;
+        }
+
+        &:hover{
+           path{
+            fill: $gold-c;
+           }
+        }
+    }
+
+    &__nav{
+        display: flex;
+    }
+
+    &__popub{
+        position: absolute;
+        top: -100%;
+        left: 0;
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        width: 100%;
+        height: 400px;
+        border: 1px solid #000;
+        @extend %transition;
+
+        &.active{
+            top: 100%;
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+        }
+
+
+        &-title{
+            background-color: #121212;
+            text-align: center;
+            padding: 10px 0;
+
+            p{
+                color: $white-c;
+            }
+        }
+    }
+
+    &__menu{
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        visibility: hidden;
+        background-color: rgba(0, 0, 0, 0.4);
+        z-index: 10;
+        @extend %transition;
+
+        &.active{
+            opacity: 1;
+            visibility: visible;
+
+            .header__panel{
+                transform: translateX(0);
+                @extend %transition;
+            }
+        }
+
+    }
+
+    &__panel{
+        width: 300px;
+        height: 100%;
+        background-color: $white-c;
+        margin: 0 0 0 auto;
+        transform: translateX(100%);
+    }
+
+}
